@@ -29,7 +29,6 @@ public class Usuario {
 	private List<Permissoes> permissoes;
 	
 	
-	
 	public String getSenha() {
 		return senha;
 	}

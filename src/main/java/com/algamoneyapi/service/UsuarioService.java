@@ -20,6 +20,7 @@ public class UsuarioService {
 
 	@Autowired
 	private UsuarioRepository usuarioRepository;
+	
 
 	public Usuario atualizar(Long codigo, Usuario usuario) {
 
@@ -39,14 +40,14 @@ public class UsuarioService {
 		if (usuario.getPermissoes() == null) {
 			List<Permissoes> permissoes = new ArrayList<>();
 			usuario.setPermissoes(permissoes);
-		}
+		} 
 		
 		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 		usuario.setSenha(encoder.encode(usuario.getSenha()));
-		
+
 		Usuario usuarioSalvo = usuarioRepository.save(usuario);
-		
+
 		return usuarioSalvo;
 	}
-	
+
 }
