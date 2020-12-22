@@ -36,7 +36,6 @@ public class BasicSecurityConfig extends WebSecurityConfigurerAdapter {
 			.and()
 			.httpBasic()
 			.and()
-			.formLogin().disable()
 			.sessionManagement()
 				.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
 			.and()
