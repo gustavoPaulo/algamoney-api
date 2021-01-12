@@ -1,5 +1,6 @@
 package com.algamoneyapi.repository;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.domain.Page;
@@ -15,4 +16,6 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Long>, Usuario
 	public Optional<Usuario> findByEmail(String email);
 	
 	Page<Usuario> filtrar(UsuarioFilter usuarioFilter, Pageable pageable);
+	
+	public List<Usuario> findByPermissoesDescricao(String permissaoDescricao);
 }
