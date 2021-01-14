@@ -1,0 +1,1 @@
+insert into permissao values (13, 'ROLE_CADASTRAR_SENHA');

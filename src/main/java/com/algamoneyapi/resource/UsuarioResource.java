@@ -12,6 +12,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -83,6 +84,25 @@ public class UsuarioResource {
 		
 		Usuario usuarioSalvo = usuarioService.atualizar(codigo, usuario);
 		return ResponseEntity.ok(usuarioSalvo);	
+	}
+	
+	@PutMapping("/senha/{codigo}")
+	@PreAuthorize("hasAuthority('ROLE_CADASTRAR_SENHA')")
+	public ResponseEntity<Usuario> alterarSenha(@PathVariable Long codigo, @Valid @RequestBody Usuario usuario){
+		
+		Usuario usuarioSalvo = usuarioService.alterarSenha(codigo, usuario);
+		return ResponseEntity.ok(usuarioSalvo);	
+	}
+	
+	@GetMapping("/validar-senha/{codigo}/{senha}")
+	public boolean validarSenha(@PathVariable Long codigo, @PathVariable String senha) {
+		
+		Usuario usuarioSalvo = usuarioService.buscarUsuarioPeloCodigo(codigo);
+		
+		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+		boolean senhasIguais = encoder.matches(senha, usuarioSalvo.getSenha());
+		
+		return senhasIguais;
 	}
 	
 }

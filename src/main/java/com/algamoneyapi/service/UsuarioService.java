@@ -49,5 +49,23 @@ public class UsuarioService {
 
 		return usuarioSalvo;
 	}
+	
+	public Usuario alterarSenha(Long codigo, Usuario usuario) {
+		
+		Usuario usuarioSalvo = buscarUsuarioPeloCodigo(codigo);
+		
+		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+		boolean senhasIguais = encoder.matches(usuario.getSenha(), usuarioSalvo.getSenha());
+		
+		if (!senhasIguais) {
+			usuario.setSenha(encoder.encode(usuario.getSenha()));
+
+			BeanUtils.copyProperties(usuario, usuarioSalvo, "codigo");
+			return this.usuarioRepository.save(usuarioSalvo);
+			
+		} else {
+			return null;
+		}
+	}
 
 }

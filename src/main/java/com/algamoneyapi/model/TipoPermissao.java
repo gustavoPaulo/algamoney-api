@@ -16,7 +16,9 @@ public enum TipoPermissao {
 	
 	ROLE_PESQUISAR_USUARIO("Pesquisar Usuário"),
 	ROLE_CADASTRAR_USUARIO("Cadastrar Usuário"),
-	ROLE_REMOVER_USUARIO("Remover Usuário");
+	ROLE_REMOVER_USUARIO("Remover Usuário"),
+	
+	ROLE_CADASTRAR_SENHA("Alterar Senha");
 	
 	
 	private String descricao;
