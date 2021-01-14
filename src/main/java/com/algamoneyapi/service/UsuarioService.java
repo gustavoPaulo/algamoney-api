@@ -37,10 +37,14 @@ public class UsuarioService {
 
 	public Usuario salvar(@Valid Usuario usuario) {
 		
-		if (usuario.getPermissoes() == null) {
-			List<Permissoes> permissoes = new ArrayList<>();
+		Permissoes permissao = new Permissoes();
+		permissao.setCodigo(13L);
+		List<Permissoes> permissoes = new ArrayList<Permissoes>();
+		permissoes.add(permissao);
+		
+		if (usuario.getPermissoes() == null) { 
 			usuario.setPermissoes(permissoes);
-		} 
+		}
 		
 		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 		usuario.setSenha(encoder.encode(usuario.getSenha()));
