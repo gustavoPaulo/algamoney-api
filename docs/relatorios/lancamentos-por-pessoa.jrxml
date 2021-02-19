@@ -16,7 +16,7 @@
 			<textField>
 				<reportElement x="1" y="12" width="554" height="37" uuid="e4a8d88d-0d80-4f6a-b591-687ea323ef93"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="20"/>
+					<font size="14"/>
 				</textElement>
 				<textFieldExpression><![CDATA["Lançamentos por pessoa de " + DATEFORMAT($P{DT_INICIO}, "dd/MM/yyyy") + " até " + DATEFORMAT($P{DT_FIM}, "dd/MM/yyyy")]]></textFieldExpression>
 			</textField>
