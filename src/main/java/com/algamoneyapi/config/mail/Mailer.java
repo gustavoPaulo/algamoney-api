@@ -78,7 +78,7 @@ public class Mailer {
 			mailSender.send(mimeMessage);
 			
 		} catch (MessagingException e) {
-			throw new RuntimeException("Problemas no envio de e-mail!", e);
+			throw new RuntimeException("Ocorreu algum problema no envio de e-mail!", e);
 		}
 	}
 	
